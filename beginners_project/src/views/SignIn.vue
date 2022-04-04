@@ -14,6 +14,7 @@
           >
           <input
             type="text"
+            ref="inputRef"
             id="firstName"
             name="firstName"
             v-model="state.firstname"
@@ -168,6 +169,7 @@ export default {
         .catch(error => console.log(error))
       this.submitted = true
       this.v$.$validate()
+      // console.log(this.v$.$validate())
       if (!this.v$.$error) {
         // if ANY fail validation
         alert('Form successfully submitted.')
@@ -175,6 +177,9 @@ export default {
         alert('Form failed validation')
       }
     }
+  },
+  mounted () {
+    this.$refs.inputRef.focus()
   }
 }
 </script>
